@@ -7,6 +7,15 @@ use Illuminate\Http\Request;
 
 class EventoController extends Controller
 {
+
+    public function mostrarEventos($idEspacio):array{
+        return $this->select('*')
+        ->where('evento.idEspacio', $idEspacio)
+        ->get()
+        ->toArray();
+    }
+
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +23,8 @@ class EventoController extends Controller
      */
     public function index()
     {
-        //
+        $datos['eventos']= Evento::paginate(30);
+        return view('/misEventos', $datos);
     }
 
     /**

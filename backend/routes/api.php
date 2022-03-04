@@ -19,4 +19,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
-Route::post('/getHorarioDisponible', ['EspacioController@mostrarDisponible']);
+Route::get('espacio', 'EspacioController@mostrarDisponible');
+
+Route::get('evento', 'EventoController@index');
+Route::get('eventos/{evento}', 'EventoController@show');
+Route::put('eventos/{evento}', 'EventoController@update');
+Route::delete('eventos/{evento}', 'EventoController@delete');
